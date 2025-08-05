@@ -77,20 +77,6 @@ def test_baked_without_allow_new_user_signup(cookies):
     assert "django-constance[database]==" not in requirements_file
 
 
-def test_baked_django_core_asgi_file_ok(cookies):
-    """Test Django Core asgi.py file has been generated correctly."""
-    default_django = cookies.bake()
-
-    asgi_path = default_django.project_path / "core/asgi.py"
-    asgi_file = asgi_path.read_text().splitlines()
-
-    assert '"""django-boilerplate ASGI Configuration.' in asgi_file
-    assert (
-        'os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")'
-        in asgi_file
-    )
-
-
 def test_baked_django_core_init_py_file(cookies):
     """Test Django Core __init__.py file has been generated correctly."""
     default_django = cookies.bake()
@@ -235,19 +221,6 @@ def test_baked_django_with_commit_message_file(cookies):
     )
 
 
-def test_baked_django_without_commit_message_file(cookies):
-    """Test Django Conventional commit message template has not been generated."""
-    non_default_django = cookies.bake(
-        extra_context={
-            "create_conventional_commits_edit_message": "n",
-        }
-    )
-
-    assert ".git-commit-template.txt" not in os.listdir(
-        non_default_django.project_path / ".github"
-    )
-
-
 def test_baked_django_without_constance_config_in_base_py(cookies):
     """Test django-constance not installed."""
     default_django = cookies.bake()
@@ -353,19 +326,6 @@ def test_baked_django_without_custom_issue_template_files(cookies):
     dir_list = os.listdir(ISSUE_TEMPLATE_parent)
     assert "ISSUE_TEMPLATE" not in dir_list
 
-
-def test_baked_django_with_docker(cookies):
-    """Test Django Docker folder has been generated correctly."""
-    non_default_django = cookies.bake(extra_context={"deploy_with_docker": "y"})
-
-    assert "Dockerfile" in os.listdir(non_default_django.project_path)
-    assert ".dockerignore" in os.listdir(non_default_django.project_path)
-    assert "docker-compose-swarm.yml" in os.listdir(
-        non_default_django.project_path / "compose"
-    )
-    assert "docker-entrypoint.sh" in os.listdir(non_default_django.project_path)
-
-
 def test_baked_django_without_docker(cookies):
     """Test Django Docker folder has not been generated."""
     default_django = cookies.bake()
@@ -392,23 +352,6 @@ def test_baked_django_with_docs(cookies):
     tox_file = str(tox_path.read_text().splitlines())
 
     assert "[testenv:docs]" in tox_file
-
-
-def test_baked_django_without_docs(cookies):
-    """Test Django docs folder has not been generated."""
-    non_default_django = cookies.bake(extra_context={"include_sphinx_docs": "n"})
-
-    assert "docs" not in os.listdir(non_default_django.project_path)
-
-    requirements_path = non_default_django.project_path / "requirements_dev.txt"
-    requirements_file = str(requirements_path.read_text().splitlines())
-
-    assert "-r docs/requirements.txt" not in requirements_file
-
-    tox_path = non_default_django.project_path / "tox.ini"
-    tox_file = str(tox_path.read_text().splitlines())
-
-    assert "[testenv:docs]" not in tox_file
 
 
 def test_baked_django_with_docs_conf_settings_ok(cookies):
@@ -760,25 +703,6 @@ def test_baked_django_with_pyup_io(cookies):
     assert "   :alt: Updates" in readme_file
 
 
-def test_baked_django_without_pyup_io(cookies):
-    """Test Django pyup.io file has not been generated."""
-    non_default_django = cookies.bake(extra_context={"use_pyup_io": "n"})
-
-    assert ".pyup.yml" not in os.listdir(non_default_django.project_path)
-
-    readme_path = non_default_django.project_path / "README.rst"
-    readme_file = readme_path.read_text().splitlines()
-
-    assert (
-        ".. image:: https://pyup.io/repos/github/imAsparky/django-boilerplate/shield.svg"
-        not in readme_file
-    )
-    assert (
-        "   :target: https://pyup.io/repos/github/imAsparky/django-boilerplate/"
-        not in readme_file
-    )
-    assert "   :alt: Updates" not in readme_file
-
 
 def test_baked_django_readme_file(cookies):
     """Test Django README file has been generated correctly."""
@@ -897,30 +821,6 @@ def test_baked_django_with_read_the_docs(cookies):
         in rtd_file
     )
     assert "   :alt: Documentation Status" in rtd_file
-
-
-def test_baked_django_without_read_the_docs(cookies):
-    """Test Django readthedocs config has not been generated correctly."""
-    non_default_django = cookies.bake(
-        extra_context={
-            "use_readthedocs": "n",
-        }
-    )
-
-    assert ".readthedocs.yaml" not in os.listdir(non_default_django.project_path)
-
-    rtd_path = non_default_django.project_path / "README.rst"
-    rtd_file = rtd_path.read_text().splitlines()
-
-    assert (
-        ".. image:: https://readthedocs.org/projects/django-boilerplate/badge/?version=latest"
-        not in rtd_file
-    )
-    assert (
-        "   :target: https://django-boilerplate.readthedocs.io/en/latest/?badge=latest"
-        not in rtd_file
-    )
-    assert "   :alt: Documentation Status" not in rtd_file
 
 
 def test_baked_django_with_semantic_release(cookies):

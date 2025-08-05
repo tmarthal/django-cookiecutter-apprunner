@@ -5,18 +5,13 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
 from .base import *  # noqa: F405 F401 F403
-{% if cookiecutter.deploy_with_docker == "swarm" %}
-env = environ.FileAwareEnv()
-{% else %}
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
 environ.Env.read_env(os.path.join(BASE_DIR, ".env/.production"))  # noqa: F405
-{% endif %}
 
 logger = logging.getLogger(__name__)
-
 
 ALLOWED_HOSTS = env.list(
     "PROD_ALLOWED_HOSTS",

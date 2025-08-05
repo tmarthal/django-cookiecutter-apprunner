@@ -15,12 +15,6 @@ GIT_EMAIL = "{{cookiecutter.github_user_email}}"
 
 
 REMOVE_FILES = [
-    '{% if cookiecutter.use_pyup_io == "n" %} \
-        .pyup.yml  {% endif %}',
-    '{% if cookiecutter.include_sphinx_docs == "n" %} \
-        docs {% endif %}',
-    '{% if cookiecutter.use_readthedocs == "n" %} \
-        .readthedocs.yaml {% endif %}',
     '{% if cookiecutter.include_contributor_covenant_code_of_conduct == "n" %} \
         docs/source/code-of-conduct.rst {% endif %}',
     '{% if cookiecutter.include_documentation_templates == "n" %} \
@@ -29,8 +23,6 @@ REMOVE_FILES = [
         docs/source/how-to-guides/how-to-contribute.rst {% endif %}',
     '{% if cookiecutter.open_source_license == "Not open source" %} \
         LICENSE.rst {% endif %}',
-    '{% if cookiecutter.create_conventional_commits_edit_message == "n" %} \
-        .github/.git-commit-template.txt {% endif %}',
     '{% if cookiecutter.use_pre_commit == "n" %} \
         .pre-commit-config.yaml {% endif %}',
     '{% if cookiecutter.use_GH_action_semantic_version == "n" %} \
@@ -45,14 +37,6 @@ REMOVE_FILES = [
         .github/ISSUE_TEMPLATE {% endif %}',
     '{% if cookiecutter.use_GH_custom_issue_templates == "y" %} \
         .github/ISSUE_TEMPLATE.md {% endif %}',
-    '{% if cookiecutter.deploy_with_docker == "n" %} \
-        Dockerfile {% endif %}',
-    '{% if cookiecutter.deploy_with_docker == "n" %} \
-        .dockerignore {% endif %}',
-    '{% if cookiecutter.deploy_with_docker == "n" %} \
-        compose {% endif %}',
-    '{% if cookiecutter.deploy_with_docker == "n" %} \
-        docker-entrypoint.sh {% endif %}',
 ]
 
 # Helper functions
@@ -189,13 +173,5 @@ def final_checks_reminders_for_users():
 if __name__ == "__main__":
     remove_files(REMOVE_FILES)
 
-    # Git options
-
-    if "{{ cookiecutter.automatic_set_up_git_and_initial_commit }}" == "y":
-        init_git()
-        git_add_and_commit_initial()
-
-        if "{{ cookiecutter.create_conventional_commits_edit_message}}" == "y":
-            git_configure_custom_commit_message()
 
     final_checks_reminders_for_users()
