@@ -17,26 +17,14 @@ GIT_EMAIL = "{{cookiecutter.github_user_email}}"
 REMOVE_FILES = [
     '{% if cookiecutter.include_contributor_covenant_code_of_conduct == "n" %} \
         docs/source/code-of-conduct.rst {% endif %}',
-    '{% if cookiecutter.include_documentation_templates == "n" %} \
-        docs/source/doc-templates {% endif %}',
     '{% if cookiecutter.include_how_to_contribute_template == "n" %} \
         docs/source/how-to-guides/how-to-contribute.rst {% endif %}',
     '{% if cookiecutter.open_source_license == "Not open source" %} \
         LICENSE.rst {% endif %}',
     '{% if cookiecutter.use_pre_commit == "n" %} \
         .pre-commit-config.yaml {% endif %}',
-    '{% if cookiecutter.use_GH_action_semantic_version == "n" %} \
-        CHANGELOG.md {% endif %}',
-    '{% if cookiecutter.use_GH_action_semantic_version == "n" %} \
-        .github/semantic.yaml {% endif %}',
-    '{% if cookiecutter.use_GH_action_semantic_version == "n" %} \
-        .github/workflows/semantic_release.yaml {% endif %}',
     '{% if cookiecutter.create_repo_auto_test_workflow == "n" %} \
         .github/workflows/test_contribution.yaml {% endif %}',
-    '{% if cookiecutter.use_GH_custom_issue_templates == "n" %} \
-        .github/ISSUE_TEMPLATE {% endif %}',
-    '{% if cookiecutter.use_GH_custom_issue_templates == "y" %} \
-        .github/ISSUE_TEMPLATE.md {% endif %}',
 ]
 
 # Helper functions

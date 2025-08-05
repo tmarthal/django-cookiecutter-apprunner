@@ -18,11 +18,6 @@
    :alt: Project Status: {{cookiecutter.use_repo_status_badge}}
 {%- endif %}
 
-{%- if cookiecutter.use_GH_action_semantic_version == "y" %}
-.. image:: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-   :target: https://python-semantic-release.readthedocs.io/en/latest/
-   :alt: Python Sementic Release
-{%- endif %}
 
 
 {%- if cookiecutter.open_source_license != "Not open source" %}
