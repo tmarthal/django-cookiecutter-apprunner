@@ -1,7 +1,7 @@
 {
-  "author_name": "Mark Sevelj",
+  "author_name": "John Doe",
   "email": "mark@example.com",
-  "github_username": "imAsparky",
+  "github_username": "tmarthal",
   "github_user_email": "{{ cookiecutter.email }}",
   "project_name": "Django Boilerplate",
   "git_project_name": "{{ cookiecutter.project_name.lower().replace(' ', '-').replace('_', '-') }}",
@@ -34,44 +34,11 @@
     "n",
     "y"
   ],
-  "deploy_with_docker": [
-    "n",
-    "y",
-    "swarm"
-  ],
   "use_pre_commit": [
     "y",
     "n"
   ],
   "create_repo_auto_test_workflow": [
-    "y",
-    "n"
-  ],
-  "use_GH_action_semantic_version": [
-    "y",
-    "n"
-  ],
-  "automatic_set_up_git_and_initial_commit": [
-    "y",
-    "n"
-  ],
-  "create_conventional_commits_edit_message": [
-    "y",
-    "n"
-  ],
-  "use_GH_custom_issue_templates": [
-    "y",
-    "n"
-  ],
-  "include_sphinx_docs": [
-    "y",
-    "n"
-  ],
-  "use_readthedocs": [
-    "y",
-    "n"
-  ],
-  "include_documentation_templates": [
     "y",
     "n"
   ],
@@ -88,10 +55,6 @@
     "concept",
     "wip",
     "active"
-  ],
-  "use_pyup_io": [
-    "y",
-    "n"
   ],
   "open_source_license": [
     "MIT license",

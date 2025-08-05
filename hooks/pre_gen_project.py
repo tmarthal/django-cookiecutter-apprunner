@@ -7,7 +7,6 @@
     Check against available translations
     https://github.com/django/django/blob/main/django/conf/global_settings.py
 
-
 """
 
 import re

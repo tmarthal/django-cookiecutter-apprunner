@@ -1,6 +1,8 @@
 """Django context processors."""
 
 import environ
+import subprocess
+
 {% if cookiecutter.allow_new_user_signup != "n" %}
 from constance import config
 {% endif %}
@@ -31,6 +33,17 @@ def export_vars(request) -> dict:
     data: dict = {}
 
     data["PROJECT_NAME"] = "{{ cookiecutter.project_name }}"
+
+        # Add git short hash as GIT_VERSION
+    try:
+        git_version = (
+            subprocess.check_output(["git", "rev-parse", "--short", "HEAD"])
+            .decode("utf-8")
+            .strip()
+        )
+    except Exception:
+        git_version = "unknown"
+    data["GIT_VERSION"] = git_version
 
     {% if cookiecutter.dynamically_set_css_in_templates != "n" %}
     if settings.SETTINGS_MODULE == "config.settings.production":

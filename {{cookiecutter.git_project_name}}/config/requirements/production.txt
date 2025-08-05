@@ -1,5 +1,8 @@
 -r base.txt
 
-psycopg2==2.9.10
-uWSGI==2.0.28
+gunicorn==23.0.0
+psycopg2-binary==2.9.10
 
+# AWS Dependencies
+boto3==1.38.30
+django-storages==1.14.6

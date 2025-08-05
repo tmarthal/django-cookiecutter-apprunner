@@ -2,9 +2,7 @@
 **Django 5.0+ Cookiecutter**
 ============================
 
-**Version = "0.29.5"**
-
-**Version 1.0.0 will signify the first stable Django build!**
+**Version = "0.0"**
 
 **This cookiecutter uses django-tailwind by default.  django-tailwind requires
 Node.js be installed on your development machine.**
@@ -100,12 +98,12 @@ Django Settings
 
 .. _Django settings: https://docs.djangoproject.com/en/4.2/ref/settings/
 
-Docker
+AWS App Runner Deployment
 ~~~~~~
 
-#. Deploy to production with `Docker`_.
+#. Deploy to production with `App Runner`_.
 
-.. _Docker: https://www.docker.com/
+.. _App Runner: https://aws.amazon.com/blogs/containers/deploy-and-scale-django-applications-on-aws-app-runner/
 
 
 Documentation

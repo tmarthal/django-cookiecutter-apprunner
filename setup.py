@@ -9,12 +9,11 @@ setup(
     name="django-cookiecutter",
     packages=find_packages(exclude=("tests*", "testing*")),
     version=__version__,
-    description="A Django project cookiecutter complete with built-in\
-         continuous delivery using GitHub actions. ",
-    author="Mark Sevelj",
+    description="A Django project cookiecutter complete to deploy to AWS App Runner.",
+    author="Tom Marthaler",
     license="BSD",
-    author_email="mark.sevelj@dunwright.com.au",
-    url="https://github.com/imAsparky/djang-cookiecutter",
+    author_email="marthaler@gmail.com",
+    url="https://github.com/tmarthal/django-cookiecutter-apprunner",
     keywords=[
         "Django",
         "cookiecutter",
